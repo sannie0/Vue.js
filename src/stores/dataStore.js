@@ -10,7 +10,6 @@ export const useDataStore = defineStore('data', {
     items_total: null,
     errorMessage: ''
   }),
-
   actions: {
     async get_categories(page = 0, perpage = 5) {
       this.errorMessage = ''
