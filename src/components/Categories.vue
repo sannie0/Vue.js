@@ -16,7 +16,7 @@
     <Column field="id" header="№" />
     <Column field="name" header="Наименование категории" />
   </DataTable>
-  <p v-else>Загрузка данных...</p>
+  <p v-else>Загружаем данные...</p>
 </template>
 
 <script>

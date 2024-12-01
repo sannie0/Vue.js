@@ -32,7 +32,6 @@ export const useAuthStore = defineStore('auth', {
         }
       }
     },
-
     async getUser() {
       this.errorMessage = ''
       try {
@@ -54,7 +53,6 @@ export const useAuthStore = defineStore('auth', {
         }
       }
     },
-
     logout() {
       this.token = null
       this.user = null
