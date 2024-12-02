@@ -61,17 +61,16 @@ export const useDataStore = defineStore('data', {
     async get_items(page = 0, perpage = 5) {
       this.errorMessage = ''
       try {
-        const response = await axios.get(backendUrl + '/items', {
+        const response = await axios.get(backendUrl + '/item', {
           params: {
             page: page,
             perpage: perpage
           }
         })
         this.items = response.data[0] || []
-        console.log('Raw response:', response)
-        console.log('Response data:', response.data)
-        console.log('Response data:', response.data[0])
-        console.log('Items after fetch:', this.items) //test
+        console.log('ITEM Raw response:', response)
+        console.log('ITEM Response data:', response.data[0])
+        console.log('ITEM after fetch:', this.items) //test
       } catch (error) {
         if (error.response) {
           this.errorMessage = error.response.data.message

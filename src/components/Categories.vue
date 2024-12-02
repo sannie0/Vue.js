@@ -55,10 +55,7 @@ export default {
     onPageChange(event) {
       this.offset = event.first
       this.perPage = event.rows
-      this.dataStore.get_categories({
-        page: this.offset / this.perPage,
-        rows: this.perPage
-      })
+      this.dataStore.get_categories({ page: this.offset / this.perPage, rows: this.perPage })
     }
   }
 }

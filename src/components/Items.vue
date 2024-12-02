@@ -1,7 +1,7 @@
 <template>
   <DataTable
-    v-if="items && items.length > 0"
-    :value="items"
+    v-if="itemsWithNumbers && itemsWithNumbers.length > 0"
+    :value="itemsWithNumbers"
     :lazy="true"
     :loading="dataStore.loading"
     :paginator="true"
@@ -13,7 +13,7 @@
     :laading="true"
     :first="offset"
   >
-    <Column field="id" header="№" />
+    <Column field="number" header="№" />
     <Column field="name" header="Наименование товара" />
   </DataTable>
   <p v-else>Загрузка данных...</p>
@@ -35,6 +35,13 @@ export default {
     }
   },
   computed: {
+    itemsWithNumbers() {
+      if (!this.items) return []
+      return this.items.map((item, index) => ({
+        ...item,
+        number: this.offset + index + 1
+      }))
+    },
     items() {
       return this.dataStore.items
     },
@@ -55,10 +62,7 @@ export default {
     onPageChange(event) {
       this.offset = event.first
       this.perPage = event.rows
-      this.dataStore.get_items({
-        page: this.offset / this.perPage,
-        rows: this.perPage
-      })
+      this.dataStore.get_items({ page: this.offset / this.perPage, rows: this.perPage })
     }
   }
 }
